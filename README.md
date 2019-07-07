@@ -2,6 +2,7 @@
  Solve defined problems related to a particular data structure and algorithm.
  
 ## Projects
+Evaluate and assess different data structures and algorithms for any open-ended problem and implement a solution based on our design choices.
 
 __Project 0__ : Unscramble Computer Science Problems;
 
