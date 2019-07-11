@@ -2,6 +2,7 @@
 Read file into texts and calls.
 It's ok if you don't understand how to read files.
 """
+import re
 import csv
 
 with open('texts.csv', 'r') as f:
@@ -43,3 +44,44 @@ Print the answer as a part of a message::
 to other fixed lines in Bangalore."
 The percentage should have 2 decimal digits
 """
+
+# Part A
+bangalore_num = []
+for call in calls:
+    if call[0].startswith("(080)"):
+        bangalore_num.append(call[0])
+
+receive_num = []
+for num in bangalore_num:
+    for call in calls:
+        if num == call[0]:
+            receive_num.append(call[1])
+
+code = set()
+total_bangalore = 0
+tolal_fixed_lines = 0
+for call in receive_num:
+    # Fixed line
+    if call[:2] == "(0":
+        code.add(re.search(r'(\(.*?\))', call).group(1))
+            
+    # Telemarketers
+    if call.startswith =="140":
+        code.add(call[:4])
+
+    # Mobile number
+    if (" " in call) and call.startswith(("7", "8", "9")):
+        code.add(call[:4])
+
+print("The numbers called by people in Bangalore have codes: {}".format(code))
+
+# Part B
+inter_bangalore = 0
+for call in calls:
+    if call[0].startswith("(080)") and call[1].startswith("(080)"):
+        inter_bangalore+=1
+    
+total_bangalore = len(bangalore_num)
+
+print("{:.2%} percent of calls from fixed lines in Bangalore are calls\
+to other fixed lines in Bangalore.".format(inter_bangalore/total_bangalore))
