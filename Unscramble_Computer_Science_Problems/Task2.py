@@ -19,22 +19,16 @@ Print a message:
 "<telephone number> spent the longest time, <total time> seconds, on the phone during 
 September 2016.".
 """
-call_log = {}
-duration = 0
-max_duration_num = None
+call_log   = {}
+duration   = 0
+total_time = 0
 
 for call in calls:
     call_log[call[0]] = call_log.get(call[0], 0) + int(call[3])
     call_log[call[1]] = call_log.get(call[1], 0) + int(call[3])
     
-    if call_log[call[0]] > duration:
-        max_duration_num = call[0]
-        duration = call_log[call[0]]
-        
-    if call_log[call[1]] > duration:
-        max_duration_num = call[1]
-        duration = call_log[call[1]]
 
+duration, call_number = max(zip(call_log.values(), call_log.keys()))
 
 print("{} spent the longest time, {} seconds, on the phone \
-during September 2016.".format(max_duration_num, duration))
+during September 2016.".format(call_number, duration))
