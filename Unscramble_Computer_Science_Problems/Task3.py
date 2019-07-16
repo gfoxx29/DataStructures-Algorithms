@@ -81,5 +81,5 @@ for call in calls:
     
 total_bangalore = len(bangalore_num)
 
-print("{:.2} percent of calls from fixed lines in Bangalore are calls\
-to other fixed lines in Bangalore.".format(inter_bangalore/total_bangalore))
+print("{:.2f} percent of calls from fixed lines in Bangalore are calls\
+ to other fixed lines in Bangalore.".format(inter_bangalore/total_bangalore*100))
