@@ -46,34 +46,32 @@ The percentage should have 2 decimal digits
 """
 
 # Part A
-bangalore_num = []
-for call in calls:
-    if call[0].startswith("(080)"):
-        bangalore_num.append(call[0])
+bangalore_num = [call[0] for call in calls if call[0].startswith("(080)")]
 
-receive_num = []
+receivers_list = []
 for num in bangalore_num:
     for call in calls:
         if num == call[0]:
-            receive_num.append(call[1])
+            receivers_list.append(call[1])
 
-code = set()
+area_codes = set()
 total_bangalore = 0
 tolal_fixed_lines = 0
-for call in receive_num:
+
+for call in receivers_list:
     # Fixed line
     if call[:2] == "(0":
-        code.add(re.search(r'(\(.*?\))', call).group(1))
+        area_codes.add(re.search(r'(\(.*?\))', call).group(1))
             
     # Telemarketers
     if call.startswith =="140":
-        code.add(call[:4])
+        area_codes.add(call[:4])
 
     # Mobile number
     if (" " in call) and call.startswith(("7", "8", "9")):
-        code.add(call[:4])
+        area_codes.add(call[:4])
 
-print("The numbers called by people in Bangalore have codes: {}".format(code))
+print("The numbers called by people in Bangalore have codes: {}".format(sorted(area_codes)))
 
 # Part B
 inter_bangalore = 0
@@ -83,5 +81,5 @@ for call in calls:
     
 total_bangalore = len(bangalore_num)
 
-print("{:.2%} percent of calls from fixed lines in Bangalore are calls\
+print("{:.2} percent of calls from fixed lines in Bangalore are calls\
 to other fixed lines in Bangalore.".format(inter_bangalore/total_bangalore))
