@@ -1,3 +1,4 @@
+
 """
 Read file into texts and calls.
 It's ok if you don't understand how to read files.
@@ -20,10 +21,10 @@ Print a message:
 """
 
 numbers = set()
-
 for text, call in zip(texts, calls):
-    for i in range(2):
-        numbers.add(text[i])
-        numbers.add(call[i])
+    numbers.add(text[0])
+    numbers.add(call[0])
+    numbers.add(text[1])
+    numbers.add(call[1])
 
 print("There are {} different telephone numbers in the records.".format(len(numbers)))
