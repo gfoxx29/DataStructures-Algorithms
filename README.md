@@ -10,7 +10,7 @@ We will complete five tasks based on a fabricated set of calls and texts exchang
 
 * __Project 1__ : Show Me the Data Structures
 
-We will answer six practice problems about a variety of topics related to the data structures (LRU Cache, File Recursion, Huffman Coding, Active Directory, Blockchain, Union and Intersection)
+We will answer six practice problems about a variety of topics (LRU Cache, File Recursion, Huffman Coding, Active Directory, Blockchain, Union and Intersection) related to the data structures. 
 
 * __Project 2__ : Problems vs Algorithms
 
