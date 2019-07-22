@@ -21,20 +21,18 @@ def find_files(suffix, path):
     Returns:
        a list of paths
     """
-    result = []
 
-    def find_dir(directory):
-        for f in os.listdir(directory):
-            full_path = join(directory, f)
+    list_of_paths = []
 
-            if isdir(full_path):
-                find_dir(full_path)
-            else:
-                if f.endswith(suffix):
-                  result.append(full_path)
+    def search_dir(directory):
+        for files in os.listdir(directory):
+            dirpath = join(directory, files)
+            if isdir(dirpath):
+                search_dir(dirpath)
+            elif files.endswith(suffix):
+                list_of_paths.append(dirpath)
 
-    find_dir(path)
+    search_dir(path)
+    return list_of_paths
 
-    return sorted(result)
-
-print (find_files(".c", "testdir")) # Return all directories 
+print(find_files(".c", "testdir")) # Return all directories 
