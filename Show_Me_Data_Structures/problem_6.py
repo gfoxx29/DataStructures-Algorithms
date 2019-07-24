@@ -45,17 +45,22 @@ def union(llist_1, llist_2):
     # Solution Here
 
     setA = set()
-    current_node = llist_1.head
+    setB = set()
 
-    while current_node:
-        set1.add(current_node.value)
-        current_node = current_node.next
-    current_node = llist_2.head
+    # Add members of both the sets A and B
+    def add_sets_members(llist, sets):
+        current_node = llist.head
+        while current_node:
+            sets.add(current_node.value)
+            current_node = current_node.next
+
+    add_sets_members(llist_1, setA)
+    add_sets_members(llist_2, setB)
 
     result_llist = LinkedList()
+    for member in setA.union(setB):
+        result_llist.append(member)
 
-    for member in setA:
-        result_llist.append(mumber)
     return result_llist
 
 def intersection(llist_1, llist_2):
