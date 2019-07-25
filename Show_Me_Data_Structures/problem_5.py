@@ -26,24 +26,21 @@ class BlockChain:
         self.head = None
 
     def append(self, data):
-        previous_hash = self.head.value.hash if self.head else None
+
+        if self.head is None:
+            self.head = Node(value)
+            return
+
+        previous_hash = self.next
+        self.next.previous_hash = previous_hash
         block = Block(datetime.now(), data, previous_hash)
         self.head = Node(block, self.head)
 
-
 # Tests
-block0 = BlockChain()
-block0.append("Some Information")
+block0 = Block(datetime.now(), "Block 0", 0)
+block1 = Block(datetime.now(), "Block 1", block0)
+block2 = Block(datetime.now(), "Block 2", block1)
 
-
-block1 = BlockChain()
-block1.append("Some Information")
-
-block2 = BlockChain()
-block2.append("Some Information")
-
-
-print(block0.data)
-print(block0.hash)
-print(block0.timestamp)
-print(block1.previous_hash.data)
+print("Data: {} \n Timestamp: {} \n SHA256 Hash: {} \n Prev_Hash: {} \n ".format(block0.timestamp, block0.data, block0.hash, 0))
+print("Data: {} \n Timestamp: {} \n SHA256 Hash: {} \n Prev_Hash: {} \n ".format(block1.timestamp, block1.data, block1.hash, block1.previous_hash.hash))
+print("Data: {} \n Timestamp: {} \n SHA256 Hash: {} \n Prev_Hash: {} \n ".format(block2.timestamp, block2.data, block2.hash, block2.previous_hash.hash))
