@@ -23,16 +23,25 @@ def find_files(suffix, path):
     """
 
     list_of_paths = []
-
+    
     def search_dir(directory):
-        for files in os.listdir(directory):
-            dirpath = join(directory, files)
-            if isdir(dirpath):
-                search_dir(dirpath)
-            elif files.endswith(suffix):
-                list_of_paths.append(dirpath)
+        try:
+            for files in os.listdir(directory):
+                dirpath = join(directory, files)
+                if isdir(dirpath):
+                    search_dir(dirpath)
+                elif files.endswith(suffix):
+                    list_of_paths.append(dirpath)
+        except FileNotFoundError:
+            print("This path doesn't exist!")
 
     search_dir(path)
+    if not list_of_paths:
+        print("No file found!")
+
     return list_of_paths
 
-print(find_files(".c", "testdir")) # Return all directories 
+# Test cases
+print(find_files(".c", "testdir"))  # Return all directories 
+print(find_files(".c", "datadir"))  # Print "This path doesn't exist!" 
+print(find_files(".py", "testdir")) # Print "No file found!" 
