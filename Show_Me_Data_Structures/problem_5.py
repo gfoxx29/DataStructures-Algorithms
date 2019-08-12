@@ -43,16 +43,20 @@ block0 = Block(datetime.now(), "Block 0", 0)
 block1 = Block(datetime.now(), "Block 1", block0)
 block2 = Block(datetime.now(), "Block 2", block1)
 
-# print("Data: {} \n Timestamp: {} \n SHA256 Hash: {} \n Prev_Hash: {} \n ".format(block0.data, block0.timestamp, block0.hash, 0))
-# print("Data: {} \n Timestamp: {} \n SHA256 Hash: {} \n Prev_Hash: {} \n ".format(block1.data, block1.timestamp, block1.hash, block1.previous_hash.hash))
-# print("Data: {} \n Timestamp: {} \n SHA256 Hash: {} \n Prev_Hash: {} \n ".format(block2.data, block2.timestamp, block2.hash, block2.previous_hash.hash))
 
 # Fonction to print the blocks of the block chain
 def print_blockchain(block_name):
-    print("Data: {}\n Timestamp: {} \n SHA256 Hash: {} \n Prev_Hash: {} \n ".format(block_name.data, 
+    try:
+        print("Data: {}\n Timestamp: {} \n SHA256 Hash: {} \n Prev_Hash: {} \n ".format(block_name.data, 
                                                                                      block_name.timestamp, 
                                                                                      block_name.hash, 
                                                                                      block_name.previous_hash.hash))
+    except AttributeError: 
+        print("Data: {}\n Timestamp: {} \n SHA256 Hash: {} \n Prev_Hash: {} \n ".format(block_name.data, 
+                                                                                     block_name.timestamp, 
+                                                                                     block_name.hash, 
+                                                                                     0))
+
 print_blockchain(block0)
 print_blockchain(block1)
 print_blockchain(block2)
