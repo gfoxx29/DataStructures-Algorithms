@@ -1,5 +1,5 @@
 # [Data Structures and Algorithms Nanodegree](https://eu.udacity.com/course/data-structures-and-algorithms-nanodegree--nd256)
- Solve defined problems related to a particular data structure and algorithm.
+Solve defined problems related to a particular data structure and algorithm and implement a solution based on our design choices.
  
 ## Projects
 Evaluate and assess different data structures and algorithms for any open-ended problem and implement a solution based on our design choices.
